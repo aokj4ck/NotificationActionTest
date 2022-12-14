@@ -10,10 +10,16 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let responseModel = NotificationResponseModel()
 
-
+    /// Set up 1. notification authorization
+    /// 2. notification delegation for receiving events
+    /// 3. notification actions for text responses
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        NotificationRegisterModel.requestAuth(delegate: responseModel)
+
+        NotificationRegisterModel.registerCategory()
+
         return true
     }
 
